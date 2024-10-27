@@ -1,0 +1,13 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: backstage
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  ref:
+    branch: tekton-feature
+  url: ssh://git@github.com/micha-aucoin/backstage-app.git
+  secretRef:
+    name: backstage
