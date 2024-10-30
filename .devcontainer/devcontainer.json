@@ -14,12 +14,7 @@
       "userGid": "1000",
       "upgradePackages": "true"
     },
-    "ghcr.io/devcontainers/features/git:1": {
-      "version": "latest",
-      "ppa": "false"
-    },
-    "ghcr.io/meaningful-ooo/devcontainer-features/homebrew:2": {},
-    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {}
+    "ghcr.io/devcontainers/features/nix:1": {}
   },
   "remoteUser": "vscode"
 }
