@@ -1,0 +1,29 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: homelab-vault
+  namespace: flux-system
+spec:
+  interval: 1m0s
+  ref:
+    branch: master
+  secretRef:
+    name: homelab-vault
+  url: ssh://git@github.com/micha-aucoin/homelab-vault.git
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: homelab-vault
+  namespace: flux-system
+spec:
+  interval: 1h0m0s
+  path: ./sealed-secrets/staging
+  prune: true
+  retryInterval: 2m0s
+  sourceRef:
+    kind: GitRepository
+    name: homelab-vault
+  timeout: 2m0s
+  wait: true
