@@ -3,3 +3,4 @@ bin/
 **/.env
 .envrc
 kubeconfig
+kindconfig
