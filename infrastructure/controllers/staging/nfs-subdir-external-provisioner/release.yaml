@@ -10,4 +10,4 @@ spec:
   values:
     nfs:
       server: "10.42.1.11"
-      path: "/volume1/ts-k8s-data"
+      path: "/volume1/k8s-data-test"
