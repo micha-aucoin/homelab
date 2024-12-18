@@ -1,0 +1,17 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: nfs-provisioner
+resources:
+  - service.yaml
+  - ../../base/nfs-subdir-external-provisioner
+  - local-path.yaml
+  - nfs-client.yaml
+patches:
+  - path: release.yaml
+    target:
+      kind: HelmRelease
+  # - path: nfs-client.yaml
+  #   target:
+  #     kind: StorageClass
+  #     name: nfs-client

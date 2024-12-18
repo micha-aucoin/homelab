@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nas-service
+  namespace: tailscale
+spec:
+  selector:
+    tailscale.com/parent-resource: nas-service
+  ports:
+    - protocol: TCP
+      port: 2049
+      targetPort: 2049
+  type: ClusterIP
+
