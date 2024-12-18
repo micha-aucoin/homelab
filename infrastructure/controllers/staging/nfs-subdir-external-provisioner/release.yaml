@@ -9,5 +9,5 @@ spec:
       version: "*"
   values:
     nfs:
-      server: "10.42.2.87"
+      server: "ts-nas-service-kn7bv.tailscale.svc.cluster.local"
       path: "/volume1/ts-k8s-data"
