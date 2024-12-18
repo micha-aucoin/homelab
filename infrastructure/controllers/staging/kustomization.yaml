@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
   # - weave-gitops
   # - sealed-secrets
-  # - tailscale
+  - tailscale
   # - tekton
