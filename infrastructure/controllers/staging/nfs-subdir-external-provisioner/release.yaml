@@ -9,5 +9,5 @@ spec:
       version: "*"
   values:
     nfs:
-      server: "10.42.1.11"
+      server: "nas-service"
       path: "/volume1/k8s-data-test"
