@@ -4,4 +4,5 @@ resources:
   # - weave-gitops
   - tailscale
   - nfs-subdir-external-provisioner
+  - cloudnativePG
   # - tekton
