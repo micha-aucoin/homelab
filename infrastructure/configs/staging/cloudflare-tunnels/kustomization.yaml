@@ -8,3 +8,6 @@ patches:
   - path: configmap.yaml
     target:
       kind: ConfigMap
+  - path: deployment.yaml
+    target:
+      kind: Deployment
