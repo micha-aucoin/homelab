@@ -3,3 +3,10 @@ kind: Kustomization
 namespace: nextcloud
 resources:
   - ../../base/nextcloud/
+patches:
+  - path: configmap.yaml
+    target:
+      kind: ConfigMap
+  - path: deployment.yaml
+    target:
+      kind: Deployment
