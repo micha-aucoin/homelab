@@ -5,13 +5,13 @@ namespace: nfs-provisioner
 resources:
   - service.yaml
   - ../../base/nfs-subdir-external-provisioner
-  - local-path.yaml
+  # - local-path.yaml
   # - nfs-client.yaml
 patches:
   - path: release.yaml
     target:
       kind: HelmRelease
-  - path: nfs-client.yaml
-    target:
-      kind: StorageClass
-      name: nfs-client
+  # - path: nfs-client.yaml
+  #   target:
+  #     kind: StorageClass
+  #     name: nfs-client
