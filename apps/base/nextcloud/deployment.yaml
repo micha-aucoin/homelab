@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextcloud
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nextcloud
+  template:
+    metadata:
+      name: nextcloud
+      labels:
+        app: nextcloud
+    spec:
+      containers:
+        - image: nextcloud:30.0.4-apache
+          name: nextcloud
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  key: user
+                  name: nextcloud-db-app
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: nextcloud-db-app
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: host
+                  name: nextcloud-db-app
+            - name: POSTGRES_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  key: dbname
+                  name: nextcloud-db-app
+          volumeMounts:
+            - name: data
+              mountPath: /var/www/html
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: nextcloud-pvc
