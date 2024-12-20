@@ -33,7 +33,7 @@ spec:
                 secretKeyRef:
                   key: host
                   name: nextcloud-db-app
-            - name: POSTGRES_DATABASE
+            - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
                   key: dbname
