@@ -5,6 +5,7 @@ metadata:
   annotations:
     tailscale.com/tailnet-ip: 100.120.167.58
   name: nas-service
+  namespace: nfs-provisioner
 spec:
   externalName: placeholder
   type: ExternalName

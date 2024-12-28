@@ -1,8 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  # - weave-gitops
-  - tailscale
-  - nfs-subdir-external-provisioner
-  - cloudnativePG
+  - tailscale.yaml
+  - nfs-subdir-external-provisioner.yaml
+  - cloudnativePG.yaml
   # - tekton
