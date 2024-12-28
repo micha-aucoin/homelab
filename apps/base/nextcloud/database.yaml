@@ -13,6 +13,6 @@ spec:
         - |
           ALTER USER nextcloud CREATEDB;
   storage:
-    storageClass: nfs-client
+    storageClass: longhorn
     size: 50Gi
   # enableSuperuserAccess: true
