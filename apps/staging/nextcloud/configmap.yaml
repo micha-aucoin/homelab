@@ -11,6 +11,6 @@ data:
     no-autoupdate: true
     ingress:
     - hostname: nextcloud.boxadvisers.com
-      service: http://nextcloud-https.nextcloud:80
+      service: http://nextcloud-http.nextcloud:80
             ## http://<svc>.<namespace>:<port> ##
     - service: http_status:404
