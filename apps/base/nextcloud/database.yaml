@@ -14,5 +14,5 @@ spec:
           ALTER USER nextcloud CREATEDB;
   storage:
     storageClass: longhorn
-    size: 50Gi
+    size: 10Gi
   # enableSuperuserAccess: true
