@@ -4,5 +4,5 @@ resources:
   - tailscale.yaml
   # - nfs-subdir-external-provisioner.yaml
   - cloudnativePG.yaml
-  - longhorn.yaml
+  # - longhorn.yaml
   # - tekton
