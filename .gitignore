@@ -4,3 +4,4 @@ bin/
 .envrc
 kubeconfig
 kindconfig
+longhornctl
