@@ -28,6 +28,11 @@ spec:
         name: longhorn-repo
       version: v1.7.2
   interval: 1h0m0s
+  valuesFrom:
+    - kind: Secret
+      name: longhorn-values
+      valuesKey: backupTarget
+      targetPath: defaultSettings.backupTarget
   values:
     persistence:
       defaultClassReplicaCount: 2
