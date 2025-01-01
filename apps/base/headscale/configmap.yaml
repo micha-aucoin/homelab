@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: headplane-config
+data:
+  HEADSCALE_INTEGRATION: kubernetes
+  COOKIE_SECURE: "false" # Only set this to false if you aren't behind a reverse proxy

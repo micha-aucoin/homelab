@@ -1,0 +1,55 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: headscale-headplane
+  labels:
+    app: headscale-headplane
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: headscale-headplane
+  template:
+    metadata:
+      labels:
+        app: headscale-headplane
+    spec:
+      shareProcessNamespace: true
+      serviceAccountName: headplane-serviceaccount
+      containers:
+        - name: headplane
+          image: ghcr.io/tale/headplane:latest
+          envFrom:
+            - secretRef:
+                name: headplane-secrets
+            - configMapRef:
+                name: headplane-config
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          volumeMounts:
+            - name: headscale-config
+              mountPath: /etc/headscale
+
+        - name: headscale
+          image: headscale/headscale:latest
+          command: ['serve']
+          env:
+            - name: TZ
+              value: 'America/Chicago' # Adjust timezone as needed
+          volumeMounts:
+            - name: headscale-data
+              mountPath: /var/lib/headscale
+            - name: headscale-config
+              mountPath: /etc/headscale
+
+      volumes:
+        - name: headscale-data
+          persistentVolumeClaim:
+            claimName: headscale-data
+        - name: headscale-config
+          persistentVolumeClaim:
+            claimName: headscale-config

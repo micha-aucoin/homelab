@@ -1,0 +1,29 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: headscale-network-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: headscale-headplane
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: headscale-headplane
+      ports:
+        - protocol: TCP
+          port: 8080
+        - protocol: TCP
+          port: 3000
+  egress:
+    - to:
+        - podSelector:
+            matchLabels:
+              app: headscale-headplane
+      ports:
+        - protocol: TCP
+          port: 8080
+        - protocol: TCP
+          port: 3000

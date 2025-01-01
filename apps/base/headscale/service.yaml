@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: headscale-service
+spec:
+  selector:
+    app: headscale-headplane
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      name: headscale
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: headplane-service
+spec:
+  selector:
+    app: headscale-headplane
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      name: headplane

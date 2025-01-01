@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: headplane-serviceaccount
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: headplane-role
+rules:
+  - apiGroups: ['']
+    resources: ['pods']
+    verbs: ['get', 'list']
+  - apiGroups: ['apps']
+    resources: ['deployments']
+    verbs: ['get', 'list']
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: headplane-rolebinding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: headplane-role
+subjects:
+  - kind: ServiceAccount
+    name: headplane-serviceaccount
