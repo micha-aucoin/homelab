@@ -9,7 +9,3 @@ spec:
     spec:
       nodeSelector:
         node-type: amd64
-      volumes:
-      - name: creds
-        secret:
-          secretName: nextcloud

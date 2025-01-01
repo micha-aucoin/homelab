@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: nextcloud
 resources:
   - ../../base/nextcloud/
+  - ../../base/cloudflare/
 patches:
   - path: configmap.yaml
     target:
