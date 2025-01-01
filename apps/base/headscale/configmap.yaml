@@ -6,3 +6,4 @@ metadata:
 data:
   HEADSCALE_INTEGRATION: kubernetes
   COOKIE_SECURE: "false" # Only set this to false if you aren't behind a reverse proxy
+  HEADSCALE_URL: http://headscale-service.headscale.svc.cluster.local
