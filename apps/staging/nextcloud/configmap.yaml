@@ -6,6 +6,12 @@ metadata:
 data:
   config.yaml: |
     tunnel: nextcloud
+    credentials-file: /etc/cloudflared/creds/credentials.json
+    metrics: 0.0.0.0:2000
+    no-autoupdate: true
     ingress:
     - hostname: nextcloud.boxadvisers.com
       service: http://nextcloud-http.nextcloud:80
+    - hostname: hello.example.com
+      service: hello_world
+    - service: http_status:404
