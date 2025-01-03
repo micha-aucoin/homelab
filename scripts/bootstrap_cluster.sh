@@ -4,11 +4,11 @@
 #
 # Workflow:
 # 1. switch cluster context for flux deployment.
-#    this name will be used in clusters/ dir.
+#    this name will be used in clusters folder.
 # 2. search thru password-store for a github token.
 #    assuming you have the standard unix password manager.
 # 3. search thru remote git urls.
-#    flux will map the cluster to the repo.
+#    flux will connect the cluster to the repo.
 ################################################################
 
 

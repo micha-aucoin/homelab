@@ -11,19 +11,14 @@
 # 2. clone git repository
 #    `git clone git@github.com:fluxcd/flux2-kustomize-helm-example.git ~/.config/flux-example`
 #
-# 3. The script takes a single argument that points to the cluster
-#    where you want the yaml-file/flux-resource to be created.
-#    it will check if ~/.config/homelab/clusters/<arg> exists.
+# 3. update the CONFIG section to point to the git repo, branch and, base kustomization path
 #
-# 3. The script creates a Git authentication secret for
-#    connecting to the specified Git repository.
-
-# 4. It generates Flux GitRepository and Kustomization resources,
+# 4. it generates Flux GitRepository and Kustomization resources,
 #    exporting them as a single YAML file in the specified
 #    export directory. This YAML file can then be applied
 #    to set up or update the environment.
 #
-# The output directory structure is designed as follows:
+# The output directory structure is set as follows:
 #
 # homelab
 # ├── apps
@@ -55,7 +50,7 @@
 ################################################################
 
 
-# Config
+# CONFIG
 ################################################################
 # The Kubernetes namespace where Flux resources will be created
 NAMESPACE="flux-system"
