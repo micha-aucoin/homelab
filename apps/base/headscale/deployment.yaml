@@ -19,12 +19,10 @@ spec:
       serviceAccountName: headplane-serviceaccount
       containers:
         - name: headplane
-          image: ghcr.io/tale/headplane:latest
+          image: ghcr.io/tale/headplane:0.3.9
           envFrom:
-            - secretRef:
-                name: headplane-secrets
-            - configMapRef:
-                name: headplane-config
+          - secretRef:
+              name: headplane-secrets
           env:
             - name: POD_NAME
               valueFrom:
@@ -35,11 +33,11 @@ spec:
               mountPath: /etc/headscale
 
         - name: headscale
-          image: headscale/headscale:latest
-          command: ['serve']
+          image: headscale/headscale:0.23.0
+          command: ['headscale', 'serve']
           env:
             - name: TZ
-              value: 'America/Chicago' # Adjust timezone as needed
+              value: 'America/Chicago'
           volumeMounts:
             - name: headscale-data
               mountPath: /var/lib/headscale
@@ -51,5 +49,5 @@ spec:
           persistentVolumeClaim:
             claimName: headscale-data
         - name: headscale-config
-          persistentVolumeClaim:
-            claimName: headscale-config
+          configMap:
+            name: headscale-config

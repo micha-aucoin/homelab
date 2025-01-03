@@ -3,17 +3,34 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: headplane-ingress
-  annotations:
-    kubernetes.io/ingress.class: traefik
 spec:
+  ingressClassName: traefik
   rules:
-    - host: headplane.local
+    - host: headplane.boxadvisers.com
       http:
         paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: headplane-service
-                port:
-                  number: 3000
+        - backend:
+            service:
+              name: headplane-service
+              port:
+                number: 3000
+          path: /admin
+          pathType: Prefix
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: headscale-ingress
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: headscale.boxadvisers.com
+      http:
+        paths:
+        - backend:
+            service:
+              name: headplane-service
+              port:
+                number: 8080
+          path: /
+          pathType: Prefix

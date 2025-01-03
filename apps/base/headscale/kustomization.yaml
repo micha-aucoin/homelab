@@ -8,5 +8,5 @@ resources:
   - storage.yaml
   - deployment.yaml
   - service.yaml
-  - network.yaml
+  # - network.yaml
   - ingress.yaml
