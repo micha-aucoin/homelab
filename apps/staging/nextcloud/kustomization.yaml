@@ -4,13 +4,13 @@ kind: Kustomization
 namespace: nextcloud
 resources:
   - ../../base/nextcloud/
-  - ../../base/cloudflare/
-patches:
-  - path: configmap.yaml
-    target:
-      kind: ConfigMap
-      name: cloudflared
-  - path: deployment.yaml
-    target:
-      kind: Deployment
-      name: cloudflared
+#   - ../../base/cloudflare/
+# patches:
+#   - path: configmap.yaml
+#     target:
+#       kind: ConfigMap
+#       name: cloudflared
+#   - path: deployment.yaml
+#     target:
+#       kind: Deployment
+#       name: cloudflared
