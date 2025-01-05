@@ -5,6 +5,11 @@ namespace: nextcloud
 resources:
   - ../../base/nextcloud/
 #   - ../../base/cloudflare/
+patches:
+  - path: ingress.yaml
+    target:
+      kind: Ingress
+      name: nextcloud-ingress
 # patches:
 #   - path: configmap.yaml
 #     target:
