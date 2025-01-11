@@ -1,0 +1,23 @@
+---
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotContent
+metadata:
+  name: nextcloud-db-backup-wal
+spec:
+  volumeSnapshotClassName: longhorn-backup-vsc
+  driver: driver.longhorn.io
+  deletionPolicy: Delete
+  source:
+    snapshotHandle: bak://pvc-01f2e510-3477-4910-baf4-dae7b755f652/backup-3df01bec6f984c75
+  volumeSnapshotRef:
+    name: nextcloud-snapshot-db-backup-wal
+    namespace: nextcloud
+---
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: nextcloud-snapshot-db-backup-wal
+spec:
+  volumeSnapshotClassName: longhorn-backup-vsc
+  source:
+    volumeSnapshotContentName: nextcloud-db-backup-wal

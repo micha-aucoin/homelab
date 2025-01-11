@@ -16,7 +16,7 @@ data:
     #
     # https://myheadscale.example.com:443
     #
-    server_url: http://headscale.boxadvisers.com
+    server_url: http://headscale-s.boxadvisers.com
 
     # Address to listen to / bind to on the server
     #

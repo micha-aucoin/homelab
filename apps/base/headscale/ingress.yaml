@@ -6,7 +6,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: headplane.boxadvisers.com
+    - host: headplane-s.boxadvisers.com
       http:
         paths:
         - backend:
@@ -24,12 +24,12 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-    - host: headscale.boxadvisers.com
+    - host: headscale-s.boxadvisers.com
       http:
         paths:
         - backend:
             service:
-              name: headplane-service
+              name: headscale-service
               port:
                 number: 8080
           path: /
