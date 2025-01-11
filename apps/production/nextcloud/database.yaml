@@ -15,9 +15,6 @@ spec:
     recovery:
       database: nextcloud
       owner: nextcloud
-      postInitApplicationSQL:
-        - |
-          ALTER USER nextcloud CREATEDB;
       volumeSnapshots:
         storage:
           name: nextcloud-snapshot-db-backup
