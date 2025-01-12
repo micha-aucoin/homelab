@@ -8,7 +8,7 @@ spec:
   driver: driver.longhorn.io
   deletionPolicy: Delete
   source:
-    snapshotHandle: bak://pvc-4be27d0d-6aba-47f7-b52a-c2f704429b5a/backup-b6d7d6634d0e4df3
+    snapshotHandle: bak://pvc-4be27d0d-6aba-47f7-b52a-c2f704429b5a/backup-8930b027d4064f2f
   volumeSnapshotRef:
     name: nextcloud-snapshot-data-backup
     namespace: nextcloud
