@@ -13,8 +13,6 @@ spec:
     #     - |
     #       ALTER USER nextcloud CREATEDB;
     recovery:
-      database: nextcloud
-      owner: nextcloud
       volumeSnapshots:
         storage:
           name: nextcloud-snapshot-db-backup
