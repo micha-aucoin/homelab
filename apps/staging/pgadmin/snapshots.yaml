@@ -8,8 +8,6 @@ spec:
   volumeSnapshotClassName: longhorn-backup-vsc
   driver: driver.longhorn.io
   deletionPolicy: Delete
-  source:
-    snapshotHandle: bak://NA/NA
   volumeSnapshotRef:
     name: pgadmin-pvc-data-snapshot
     namespace: pgadmin

@@ -22,7 +22,7 @@ spec:
       resources:
         requests:
           storage: 10Gi
-      volumeName: nextcloud-database-volume
+      # volumeName: nextcloud-database-pv
 
   walStorage:
     pvcTemplate:
@@ -30,7 +30,7 @@ spec:
       resources:
         requests:
           storage: 10Gi
-      volumeName: nextcloud-database-wal-volume
+      # volumeName: nextcloud-database-wal-pv
 
   backup:
     volumeSnapshot:
@@ -51,4 +51,4 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  volumeName: nextcloud-pvc-data-volume
+  # volumeName: nextcloud-pvc-data-pv

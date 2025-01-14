@@ -45,4 +45,4 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: nextcloud-data-pvc
+            claimName: nextcloud-pvc-data
