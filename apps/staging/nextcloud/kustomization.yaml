@@ -8,65 +8,65 @@ resources:
   - ../../base/nextcloud
   # - ../../base/cloudflare/
   - ingress.yaml
-patches:
-  - patch: |-
-      apiVersion: snapshot.storage.k8s.io/v1
-      kind: VolumeSnapshotContent
-      metadata:
-        name: nextcloud-database-content
-        namespace: longhorn-system
-      spec:
-        source:
-          snapshotHandle: bak://pvc-b68ec363-ac39-4fe0-9856-026287181332/backup-715d6fd2f3d34735
-  - patch: |-
-      apiVersion: snapshot.storage.k8s.io/v1
-      kind: VolumeSnapshotContent
-      metadata:
-        name: nextcloud-database-wal-content
-        namespace: longhorn-system
-      spec:
-        source:
-          snapshotHandle: bak://pvc-01f2e510-3477-4910-baf4-dae7b755f652/backup-831015e2c4f74563
-  - patch: |-
-      apiVersion: snapshot.storage.k8s.io/v1
-      kind: VolumeSnapshotContent
-      metadata:
-        name: nextcloud-pvc-data-content
-        namespace: longhorn-system
-      spec:
-        volumeSnapshotClassName: longhorn-backup-vsc
-        driver: driver.longhorn.io
-        deletionPolicy: Delete
-        source:
-          snapshotHandle: bak://pvc-4be27d0d-6aba-47f7-b52a-c2f704429b5a/backup-8930b027d4064f2f
-  - patch: |-
-      apiVersion: postgresql.cnpg.io/v1
-      kind: Cluster
-      metadata:
-        name: nextcloud-database
-        namespace: nextcloud
-      spec:
-          recovery:
-            volumeSnapshots:
-              storage:
-                name: nextcloud-database-snapshot
-                kind: VolumeSnapshot
-                apiGroup: snapshot.storage.k8s.io
-              walStorage:
-                name: nextcloud-database-wal-snapshot
-                kind: VolumeSnapshot
-                apiGroup: snapshot.storage.k8s.io
-  - patch: |-
-      apiVersion: v1
-      kind: PersistentVolumeClaim
-      metadata:
-        name: nextcloud-pvc-data
-        namespace: nextcloud
-      spec:
-        dataSource:
-          name: nextcloud-pvc-data-snapshot
-          kind: VolumeSnapshot
-          apiGroup: snapshot.storage.k8s.io
+# patches:
+#   - patch: |-
+#       apiVersion: snapshot.storage.k8s.io/v1
+#       kind: VolumeSnapshotContent
+#       metadata:
+#         name: nextcloud-database-content
+#         namespace: longhorn-system
+#       spec:
+#         source:
+#           snapshotHandle: bak://pvc-b68ec363-ac39-4fe0-9856-026287181332/backup-715d6fd2f3d34735
+#   - patch: |-
+#       apiVersion: snapshot.storage.k8s.io/v1
+#       kind: VolumeSnapshotContent
+#       metadata:
+#         name: nextcloud-database-wal-content
+#         namespace: longhorn-system
+#       spec:
+#         source:
+#           snapshotHandle: bak://pvc-01f2e510-3477-4910-baf4-dae7b755f652/backup-831015e2c4f74563
+#   - patch: |-
+#       apiVersion: snapshot.storage.k8s.io/v1
+#       kind: VolumeSnapshotContent
+#       metadata:
+#         name: nextcloud-pvc-data-content
+#         namespace: longhorn-system
+#       spec:
+#         volumeSnapshotClassName: longhorn-backup-vsc
+#         driver: driver.longhorn.io
+#         deletionPolicy: Delete
+#         source:
+#           snapshotHandle: bak://pvc-4be27d0d-6aba-47f7-b52a-c2f704429b5a/backup-8930b027d4064f2f
+#   - patch: |-
+#       apiVersion: postgresql.cnpg.io/v1
+#       kind: Cluster
+#       metadata:
+#         name: nextcloud-database
+#         namespace: nextcloud
+#       spec:
+#           recovery:
+#             volumeSnapshots:
+#               storage:
+#                 name: nextcloud-database-snapshot
+#                 kind: VolumeSnapshot
+#                 apiGroup: snapshot.storage.k8s.io
+#               walStorage:
+#                 name: nextcloud-database-wal-snapshot
+#                 kind: VolumeSnapshot
+#                 apiGroup: snapshot.storage.k8s.io
+#   - patch: |-
+#       apiVersion: v1
+#       kind: PersistentVolumeClaim
+#       metadata:
+#         name: nextcloud-pvc-data
+#         namespace: nextcloud
+#       spec:
+#         dataSource:
+#           name: nextcloud-pvc-data-snapshot
+#           kind: VolumeSnapshot
+#           apiGroup: snapshot.storage.k8s.io
   # - patch: |-
   #     apiVersion: v1
   #     kind: ConfigMap
