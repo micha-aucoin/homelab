@@ -5,6 +5,7 @@ metadata:
   labels:
     app: pgadmin
   name: pgadmin-service
+  namespace: pgadmin
 spec:
   ports:
   - port: 15432

@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: headscale-headplane
+  namespace: headscale
   labels:
     app: headscale-headplane
 spec:

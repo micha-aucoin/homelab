@@ -5,6 +5,7 @@ metadata:
   labels:
     app: pgadmin
   name: pgadmin
+  namespace: pgadmin
 spec:
   replicas: 1
   selector:

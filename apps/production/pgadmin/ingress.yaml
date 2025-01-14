@@ -1,3 +1,18 @@
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: ts-pgadmin-ingress
+# spec:
+#   ingressClassName: tailscale
+#   defaultBackend:
+#     service:
+#       name: pgadmin-service
+#       port:
+#         number: 15432
+#   tls:
+#     - hosts:
+#         - pgadmin
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -6,7 +21,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: pgadmin-p.boxadvisers.com
+  - host: pgadmin.boxadvisers.com
     http:
       paths:
       - backend:

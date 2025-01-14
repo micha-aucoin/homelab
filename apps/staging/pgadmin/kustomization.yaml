@@ -1,9 +1,29 @@
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: pgadmin
 resources:
   - namespace.yaml
   - storage.yaml
   - ../../base/pgadmin
   - ingress.yaml
+patches:
+  - patch: |-
+      apiVersion: snapshot.storage.k8s.io/v1
+      kind: VolumeSnapshotContent
+      metadata:
+        name: nextcloud-database-data-content
+        namespace: longhorn-system
+      spec:
+        source:
+          snapshotHandle: bak://pvc-b68ec363-ac39-4fe0-9856-026287181332/backup-715d6fd2f3d34735
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotContent
+metadata:
+  name: pgadmin-data-backup
+  namespace: longhorn-system
+spec:
+  volumeSnapshotClassName: longhorn-backup-vsc
+  driver: driver.longhorn.io
+  deletionPolicy: Delete
+  source:
+    snapshotHandle: bak://NA/NA

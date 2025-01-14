@@ -2,7 +2,8 @@
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshotContent
 metadata:
-  name: pgadmin-data-backup
+  name: pgadmin-pvc-data-content
+  namespace: longhorn-system
 spec:
   volumeSnapshotClassName: longhorn-backup-vsc
   driver: driver.longhorn.io
@@ -10,14 +11,15 @@ spec:
   source:
     snapshotHandle: bak://NA/NA
   volumeSnapshotRef:
-    name: pgadmin-snapshot-data-backup
+    name: pgadmin-pvc-data-snapshot
     namespace: pgadmin
 ---
 apiVersion: snapshot.storage.k8s.io/v1
 kind: VolumeSnapshot
 metadata:
-  name: pgadmin-snapshot-data-backup
+  name: pgadmin-pvc-data-snapshot
+  namespace: longhorn-system
 spec:
   volumeSnapshotClassName: longhorn-backup-vsc
   source:
-    volumeSnapshotContentName: pgadmin-data-backup
+    volumeSnapshotContentName: pgadmin-pvc-data-content

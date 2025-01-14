@@ -1,0 +1,54 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: nextcloud-database
+  namespace: nextcloud
+spec:
+
+  instances: 1
+
+  bootstrap:
+    initdb:
+      database: nextcloud
+      owner: nextcloud
+      postInitApplicationSQL:
+        - |
+          ALTER USER nextcloud CREATEDB;
+
+  storage:
+    pvcTemplate:
+      storageClassName: longhorn
+      resources:
+        requests:
+          storage: 10Gi
+      volumeName: nextcloud-database-volume
+
+  walStorage:
+    pvcTemplate:
+      storageClassName: longhorn
+      resources:
+        requests:
+          storage: 10Gi
+      volumeName: nextcloud-database-wal-volume
+
+  backup:
+    volumeSnapshot:
+      className: longhorn-backup-vsc
+  # enableSuperuserAccess: true
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nextcloud-pvc-data
+  namespace: nextcloud
+spec:
+  storageClassName: longhorn
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  volumeName: nextcloud-pvc-data-volume

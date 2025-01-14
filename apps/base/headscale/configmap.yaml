@@ -3,6 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: headscale-config
+  namespace: headscale
 data:
   config.yaml: |
     # headscale will look for a configuration file named `config.yaml` (or `config.json`) in the following order:
