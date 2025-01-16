@@ -23,22 +23,22 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: user
-                  name: nextcloud-db-app
+                  name: nextcloud-database-app
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
                   key: password
-                  name: nextcloud-db-app
+                  name: nextcloud-database-app
             - name: POSTGRES_HOST
               valueFrom:
                 secretKeyRef:
                   key: host
-                  name: nextcloud-db-app
+                  name: nextcloud-database-app
             - name: POSTGRES_DB
               valueFrom:
                 secretKeyRef:
                   key: dbname
-                  name: nextcloud-db-app
+                  name: nextcloud-database-app
           volumeMounts:
             - name: data
               mountPath: /var/www/html
