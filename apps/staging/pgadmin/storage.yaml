@@ -19,6 +19,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: pgadmin-pvc-data
+  namespace: pgadmin
 spec:
   storageClassName: longhorn
   accessModes:
