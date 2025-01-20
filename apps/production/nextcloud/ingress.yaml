@@ -1,8 +1,9 @@
-# ---
+---
 # apiVersion: networking.k8s.io/v1
 # kind: Ingress
 # metadata:
 #   name: ts-nextcloud-ingress
+#   namespace: nextcloud
 # spec:
 #   ingressClassName: tailscale
 #   defaultBackend:
@@ -18,6 +19,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nextcloud-ingress
+  namespace: nextcloud
 spec:
   ingressClassName: traefik
   rules:

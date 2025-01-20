@@ -1,0 +1,58 @@
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: nextcloud-database
+  namespace: nextcloud
+spec:
+
+  instances: 1
+
+  bootstrap:
+    recovery:
+      volumeSnapshots:
+        storage:
+          name: nextcloud-database-snapshot
+          kind: VolumeSnapshot
+          apiGroup: snapshot.storage.k8s.io
+        walStorage:
+          name: nextcloud-database-wal-snapshot
+          kind: VolumeSnapshot
+          apiGroup: snapshot.storage.k8s.io
+
+  storage:
+    pvcTemplate:
+      storageClassName: longhorn
+      resources:
+        requests:
+          storage: 10Gi
+
+  walStorage:
+    pvcTemplate:
+      storageClassName: longhorn
+      resources:
+        requests:
+          storage: 10Gi
+
+  backup:
+    volumeSnapshot:
+      className: longhorn-backup-vsc
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nextcloud-pvc-data
+  namespace: nextcloud
+spec:
+  dataSource:
+    name: nextcloud-pvc-data-snapshot
+    kind: VolumeSnapshot
+    apiGroup: snapshot.storage.k8s.io
+  storageClassName: longhorn
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
