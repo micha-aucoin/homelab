@@ -1,9 +1,10 @@
 (
-  printf '%s\t%s\t%s\t%s\t%s\n' 'Namespace' 'BackupName' 'PVName' 'PVCName' 'BackupCreatedAt'
+  printf '%s\t%s\t%s\t%s\t%s\n' 'Namespace' 'BackupName' 'PVName' 'PVCName' 'SnapshotCreatedAt'
     kubectl get backups.longhorn.io -A -o=json |
     jq -r '
       .items
       | sort_by(.status.backupCreatedAt | fromdateiso8601)
+      | reverse
       | .[] |
       [
         .metadata.namespace,

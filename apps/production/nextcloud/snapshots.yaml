@@ -9,7 +9,7 @@ spec:
   driver: driver.longhorn.io
   deletionPolicy: Delete
   source:
-    snapshotHandle: bak://pvc-1a7a7edd-82c8-40d9-8293-af28ee715c0c/backup-cbb42a770a47445d
+    snapshotHandle: bak://pvc-1a7a7edd-82c8-40d9-8293-af28ee715c0c/backup-92e056bca0ff460c
   volumeSnapshotRef:
     name: nextcloud-pvc-data-snapshot
     namespace: nextcloud
@@ -35,7 +35,7 @@ spec:
   driver: driver.longhorn.io
   deletionPolicy: Delete
   source:
-    snapshotHandle: bak://pvc-616eca9d-85f3-4a2b-bacf-0776eb5e207c/backup-7fd5073ba6d24cf1
+    snapshotHandle: bak://pvc-616eca9d-85f3-4a2b-bacf-0776eb5e207c/backup-e5fb578c57364fe5
   volumeSnapshotRef:
     name: nextcloud-database-snapshot
     namespace: nextcloud
@@ -61,7 +61,7 @@ spec:
   driver: driver.longhorn.io
   deletionPolicy: Delete
   source:
-    snapshotHandle: bak://pvc-19c330bb-c360-4204-bb58-3169f73fd9c1/backup-f0edb1df33b74e9f
+    snapshotHandle: bak://pvc-19c330bb-c360-4204-bb58-3169f73fd9c1/backup-23539b6996a841c1
   volumeSnapshotRef:
     name: nextcloud-database-wal-snapshot
     namespace: nextcloud
